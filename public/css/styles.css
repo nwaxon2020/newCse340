@@ -1,0 +1,183 @@
+/******* Change Box Model ***************/
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* header CSS styling ====================== */
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 10px;
+}
+#top-header a {
+  text-decoration: none;
+  color: #000;
+}
+#top-header span {
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+#top-header span:hover {
+  color: rgb(30, 30, 119);
+}
+
+#top-header div a:hover {
+  color: rgb(30, 30, 119);
+  text-decoration: underline;
+}
+
+/* nav CSS styling ==================== */
+nav ul {
+  margin: 0px;
+  background-color: #020235;
+  color: #fff;
+  list-style-type: none;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 20px;
+}
+
+/* index js css styling=================== */
+.hero-container {
+  position: relative;
+}
+.hero-container img {
+  width: 100%;
+}
+
+.small-sec {
+  position: absolute;
+  top: 20%;
+  left: 10px;
+  width: 10rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  padding: 10px;
+  padding-bottom: 0px;
+  border-radius: 10px;
+}
+.small-sec p,
+.small-sec h3 {
+  margin: 5px;
+  color: #fff;
+}
+
+.small-sec button {
+  width: 85%;
+  padding: 0.8rem;
+  font-weight: bolder;
+  background-color: #020235;
+  color: #fff;
+  border: none;
+  transition: ease-in-out 0.3s;
+}
+.small-sec button:hover {
+  background-color: green;
+}
+#details {
+  display: grid;
+  grid-template-columns: 1fr;
+  margin: 1rem auto;
+}
+.review-container ul {
+  padding-left: 20px;
+}
+.ugrades {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.ugrades h2 {
+  grid-column: 1/-1;
+}
+.ugrades div {
+  background-color: #020235;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+}
+.ugrades div a {
+  color: #fff;
+}
+
+/* classification vehicle styles============ */
+#inv-display {
+  width: 100%;
+  padding: 0px;
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+#inv-display a {
+  font-size: 1rem;
+}
+#inv-display img {
+  width: 100%;
+}
+#inv-display li {
+  border-radius: 1rem;
+  border: 1px solid #999;
+  overflow: hidden;
+  text-align: center;
+  font-weight: bolder;
+  max-width: 12rem;
+}
+#inv-display hr {
+  border: 3px solid #000;
+  width: 100%;
+}
+
+#inv-display .namePrice {
+  padding-bottom: 10px;
+}
+
+/* footer style====================================== */
+footer {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Large View CSS styling=============================== */
+@media (min-width: 700px) {
+  body {
+    background-image: url("../images/site/small_check.jpg");
+    padding: 1rem 5rem;
+  }
+  #wrapper {
+    border: 5px solid #020235;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 1rem;
+    z-index: 2;
+  }
+  .small-sec {
+    width: 15rem;
+  }
+  .small-sec p,
+  .small-sec h3 {
+    margin: 10px;
+  }
+  .small-sec h3 {
+    font-weight: bolder;
+  }
+  #details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-items: start;
+    gap: 20px;
+  }
+  .review-container li {
+    margin: 1rem 0;
+  }
+}
