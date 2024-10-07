@@ -143,7 +143,37 @@ nav ul {
 #inv-display .namePrice {
   padding-bottom: 10px;
 }
+/* car details style ============================== */
 
+.car-detail {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+.car-detail h3 {
+  font-size: 1.3rem;
+  text-decoration: underline;
+}
+.car-detail p {
+  padding: 5px;
+}
+.car-detail p:nth-child(even) {
+  background-color: #e4e4f0;
+}
+.car-detail .price {
+  color: rgb(122, 33, 33);
+  font-weight: bolder;
+}
+.price span {
+  color: #000;
+  font-weight: bold;
+}
+.car-detail span {
+  font-weight: bolder;
+  font-size: 1.2rem;
+}
+.car-detail img {
+  width: 100%;
+}
 /* footer style====================================== */
 footer {
   margin-top: 1rem;
@@ -182,5 +212,11 @@ footer {
   }
   .review-container li {
     margin: 1rem 0;
+  }
+
+  /* car Details style large */
+  .car-detail {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 }

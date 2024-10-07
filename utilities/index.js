@@ -78,4 +78,26 @@ Util.buildClassificationGrid = async function (data) {
   return grid;
 };
 
+Util.buildInventoryCarDetails = async function (data) {
+  let card;
+  if (data) {
+    card = ` <div class="car-detail">
+      <div>
+        <img src="${data.inv_image}" alt="${data.inv_make}" />
+      </div>
+      <div>
+        <h3>${data.inv_make} Details</h3>       
+        <p class="price"><span>Price:</span> $${data.inv_price}</p>
+        <p><span>Description:</span> ${data.inv_description}</p>
+        <p><span>Color:</span> ${data.inv_color}</p>
+        <p><span>Miles:</span> ${data.inv_miles}</p>
+      </div>
+    </div>`;
+  } else {
+    card = `<p class="notice">Sorry, no matching vehicles could be found.</p>`;
+  }
+
+  return card;
+};
+
 module.exports = Util;
