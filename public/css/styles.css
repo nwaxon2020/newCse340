@@ -43,6 +43,14 @@ nav ul {
   align-items: center;
   padding: 1.5rem 20px;
 }
+nav ul a {
+  color: #fff;
+  text-decoration: none;
+}
+nav ul a:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
 
 /* index js css styling=================== */
 .hero-container {
@@ -144,7 +152,9 @@ nav ul {
   padding-bottom: 10px;
 }
 /* car details style ============================== */
-
+#car-detail {
+  margin-top: 2rem;
+}
 .car-detail {
   display: grid;
   grid-template-columns: 1fr;
