@@ -34,4 +34,10 @@ invCont.buildByInvId = async function (req, res, next) {
   });
 };
 
+invCont.buildError = async function (req, res, next) {
+  const error = new Error("This is a Server Error.");
+  error.status = 500; // Set the error status code
+  next(error); // Pass the error to the next middleware
+};
+
 module.exports = invCont;

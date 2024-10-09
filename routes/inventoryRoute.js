@@ -9,10 +9,6 @@ router.get("/type/:classificationId", invController.buildByClassificationId);
 router.get("/detail/:invId", invController.buildByInvId);
 
 //Error handeling
-router.get("/trigger-error", (req, res, next) => {
-  const error = new Error("This is a Server Error.");
-  error.status = 500; // Set the error status code
-  next(error); // Pass the error to the next middleware
-});
+router.get("/trigger-error", invController.buildError);
 
 module.exports = router;

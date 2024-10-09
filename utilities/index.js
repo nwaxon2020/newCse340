@@ -87,10 +87,14 @@ Util.buildInventoryCarDetails = async function (data) {
       </div>
       <div>
         <h3>${data.inv_make} Details</h3>       
-        <p class="price"><span>Price:</span> $${data.inv_price}</p>
+        <p class="price"><span>Price:</span> $${new Intl.NumberFormat(
+          "en-US"
+        ).format(data.inv_price)}</p>
         <p><span>Description:</span> ${data.inv_description}</p>
         <p><span>Color:</span> ${data.inv_color}</p>
-        <p><span>Miles:</span> ${data.inv_miles}</p>
+        <p><span>Miles:</span> ${new Intl.NumberFormat("en-US").format(
+          data.inv_miles
+        )}</p>
       </div>
     </div>`;
   } else {
