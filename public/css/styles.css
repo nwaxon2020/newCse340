@@ -202,6 +202,65 @@ footer {
   text-align: center;
 }
 
+/* Input styling================================== */
+#login-container {
+  background-color: #020235;
+  color: #fff;
+  margin: 0px auto;
+  width: 100%;
+  max-width: 30rem;
+  padding: 10px;
+  padding-top: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+}
+
+#login-container label {
+  display: block;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: left;
+  margin-left: 3rem;
+}
+#login-container input {
+  padding: 0.65rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  width: 95%;
+  outline: 1px solid blue;
+  border: none;
+}
+
+#login-container button {
+  font-size: 1rem;
+  margin: 0 auto;
+  display: block;
+  padding: 0.65rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  width: 95%;
+  background-color: gray;
+  color: #000;
+}
+#login-container button:hover {
+  background-color: green;
+  color: #fff;
+}
+#login-container p {
+  padding: 1rem;
+}
+#login-container a {
+  color: #c5ee10;
+}
+input:required {
+  background-color: 3px solid red;
+}
+#login-container a:hover {
+  color: #fff;
+}
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
   body {
@@ -240,5 +299,15 @@ footer {
   .car-detail {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+  }
+
+  /* Input login style */
+  #login-container {
+    padding: 1rem;
+    padding-top: 2rem;
+  }
+  #login-container input,
+  #login-container button {
+    width: 80%;
   }
 }
