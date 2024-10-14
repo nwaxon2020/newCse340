@@ -10,21 +10,25 @@
       <input type="text" id="last_name" name="last_name" required />
 
       <label for="account_email">Email Address:</label>
-      <input
-        type="email"
-        id="account_email"
-        name="account_email"
-        required
-        placeholder="@email"
-      />
+      <input type="email" name="account_email" required placeholder="@email" />
 
-      <label for="account_password">Password:</label>
-      <input
-        type="password"
-        id="account_password"
-        name="account_password"
-        required
-      />
+      <div id="register">
+        <label for="register_password">Password:</label>
+        <input
+          type="password"
+          id="register_password"
+          name="account_password"
+          required
+          minlength="12"
+          pattern="(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{12,}"
+        />
+        <i title="show password" class="fa fa-eye"></i>
+      </div>
+
+      <p class="password-title">
+        "Password must be at least 12 characters, contain at least 1 uppercase
+        letter, 1 number, and 1 special character"
+      </p>
 
       <button type="submit">Register</button>
     </form>

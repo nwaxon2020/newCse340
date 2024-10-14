@@ -256,17 +256,48 @@ footer {
   color: #c5ee10;
 }
 input:required {
-  background-color: 3px solid red;
+  border-left: 2px solid red;
+  outline: none;
+  padding: 5px;
+}
+input:valid {
+  border-left: 2px solid green;
 }
 .login-container a:hover {
   color: #fff;
 }
+
 /* Register styling=============================== */
 .register {
   border: 1px solid #999;
   border-radius: 1rem;
   padding: 20px 0px;
 }
+#register_password {
+  margin-bottom: 0px;
+}
+#register {
+  position: relative;
+}
+.fa {
+  position: absolute;
+  top: 55%;
+  right: 15%;
+  color: #000;
+  font-size: 20px;
+  font-weight: bolder;
+}
+.password-title {
+  width: 95%;
+  max-width: 20rem;
+  margin: 0px auto;
+  font-style: italic;
+  font-weight: 100;
+}
+.register button {
+  margin-top: 2rem;
+}
+
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
   body {
@@ -312,7 +343,8 @@ input:required {
     padding: 1rem;
     padding-top: 2rem;
   }
-  .login-container label {
+  .login-container label,
+  .password-title {
     margin-left: 3rem;
   }
   .login-container input,
