@@ -202,8 +202,8 @@ footer {
   text-align: center;
 }
 
-/* Input styling================================== */
-#login-container {
+/*LogIn Input styling================================== */
+.login-container {
   background-color: #020235;
   color: #fff;
   margin: 0px auto;
@@ -215,15 +215,15 @@ footer {
   text-align: center;
 }
 
-#login-container label {
+.login-container label {
   display: block;
   padding: 5px;
   font-size: 1rem;
   font-weight: bold;
   text-align: left;
-  margin-left: 3rem;
+  margin-left: 1rem;
 }
-#login-container input {
+.login-container input {
   padding: 0.65rem;
   margin-bottom: 1rem;
   font-size: 1rem;
@@ -233,9 +233,9 @@ footer {
   border: none;
 }
 
-#login-container button {
+.login-container button {
   font-size: 1rem;
-  margin: 0 auto;
+  margin: 10px auto;
   display: block;
   padding: 0.65rem;
   font-weight: bold;
@@ -245,21 +245,27 @@ footer {
   background-color: gray;
   color: #000;
 }
-#login-container button:hover {
+.login-container button:hover {
   background-color: green;
   color: #fff;
 }
-#login-container p {
+.login-container p {
   padding: 1rem;
 }
-#login-container a {
+.login-container a {
   color: #c5ee10;
 }
 input:required {
   background-color: 3px solid red;
 }
-#login-container a:hover {
+.login-container a:hover {
   color: #fff;
+}
+/* Register styling=============================== */
+.register {
+  border: 1px solid #999;
+  border-radius: 1rem;
+  padding: 20px 0px;
 }
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
@@ -302,12 +308,15 @@ input:required {
   }
 
   /* Input login style */
-  #login-container {
+  .login-container {
     padding: 1rem;
     padding-top: 2rem;
   }
-  #login-container input,
-  #login-container button {
+  .login-container label {
+    margin-left: 3rem;
+  }
+  .login-container input,
+  .login-container button {
     width: 80%;
   }
 }

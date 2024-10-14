@@ -2,7 +2,13 @@
   <h1><%= title %></h1>
   <%- messages() %>
   <div class="login-container">
-    <form>
+    <form class="register">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" required />
+
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" required />
+
       <label for="account_email">Email Address:</label>
       <input
         type="email"
@@ -20,9 +26,8 @@
         required
       />
 
-      <button type="submit">Login</button>
+      <button type="submit">Register</button>
     </form>
-
-    <p>Don't have an account? <a href="/account/register">Register here</a>.</p>
+    <p>Already have an account? <a href="/account/Login">Sign In</a>.</p>
   </div>
 </div>
