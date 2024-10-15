@@ -1,4 +1,4 @@
-const pword = document.getElementById("register_password");
+const pword = document.getElementById("account_password");
 const toogleEye = document.querySelector(".fa");
 
 toogleEye.addEventListener("click", () => {

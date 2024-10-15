@@ -14,6 +14,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities/index.js");
 const accountRoute = require("./routes/accountRoute");
+const bodyParser = require("body-parser");
 
 const session = require("express-session");
 const pool = require("./database/");
@@ -41,6 +42,9 @@ app.use(
     name: "sessionId",
   })
 );
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // Express Messages Middleware
 app.use(require("connect-flash")());

@@ -104,4 +104,20 @@ Util.buildInventoryCarDetails = async function (data) {
   return card;
 };
 
+Util.handleErrors = function (controllerFunction) {
+  return async function (req, res, next) {
+    try {
+      await controllerFunction(req, res, next);
+    } catch (err) {
+      console.error(`Error: ${err.message}`);
+      const status = err.status || 500;
+      // Render an error view with a meaningful error message
+      res.status(status).render("errors/error", {
+        title: "Error",
+        message: err.message || "An unexpected error occurred",
+      });
+    }
+  };
+};
+
 module.exports = Util;
