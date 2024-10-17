@@ -53,15 +53,7 @@ validate.registationRules = () => {
         minNumbers: 1,
         minSymbols: 1,
       })
-      .withMessage("Please enter your valid password")
-      .custom(async (account_email) => {
-        const passwordExists = await accountModel.checkExistingPassword(
-          account_email
-        );
-        if (!passwordExists) {
-          throw new Error("Wrong password");
-        }
-      }),
+      .withMessage("Please enter your valid password"),
   ];
 };
 
@@ -81,61 +73,6 @@ validate.checkRegData = async (req, res, next) => {
       account_firstname,
       account_lastname,
       account_email,
-    });
-    return;
-  }
-  next();
-};
-
-/*  **********************************
- *  Registration Data Validation Rules
- * ********************************* */
-validate.loginRules = () => {
-  return [
-    // valid email is required and cannot already exist in the DB
-    body("account_email")
-      .trim()
-      .escape()
-      .notEmpty()
-      .isEmail()
-      .normalizeEmail() // refer to validator.js docs
-      .withMessage("A valid email is required.")
-      .custom(async (account_email) => {
-        const emailExists = await accountModel.checkExistingEmail(
-          account_email
-        );
-        if (emailExists) {
-          throw new Error("Email dose not exists. Please register");
-        }
-      }),
-
-    // password is required and must be strong password
-    body("account_password")
-      .trim()
-      .notEmpty()
-      .isStrongPassword({
-        minLength: 12,
-        minLowercase: 1,
-        minUppercase: 1,
-        minNumbers: 1,
-        minSymbols: 1,
-      })
-      .withMessage("Password does not meet requirements."),
-  ];
-};
-
-validate.checkLogData = async (req, res, next) => {
-  const { account_email } = req.body;
-  let errors = [];
-  errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    let nav = await utilities.getNav();
-    res.render("accounts/login", {
-      errors,
-      title: "Login",
-      nav,
-      account_email,
-      account_password,
     });
     return;
   }

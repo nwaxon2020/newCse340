@@ -23,9 +23,4 @@ accountRouter.post(
   utilities.handleErrors(accountController.registerAccount)
 );
 
-// Process the login attempt
-accountRouter.post("/login", (req, res) => {
-  res.status(200).send("login process");
-});
-
 module.exports = accountRouter;
