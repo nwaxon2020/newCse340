@@ -2,6 +2,7 @@ const express = require("express");
 const accountRouter = new express.Router();
 const utilities = require("../utilities/index");
 const accountController = require("../controllers/accountController");
+const regValidate = require("../utilities/account-validation");
 
 // Route to handle "My Account" link (GET request)
 accountRouter.get(
@@ -16,7 +17,15 @@ accountRouter.get(
 // Route Post request method
 accountRouter.post(
   "/register",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+
   utilities.handleErrors(accountController.registerAccount)
 );
+
+// Process the login attempt
+accountRouter.post("/login", (req, res) => {
+  res.status(200).send("login process");
+});
 
 module.exports = accountRouter;

@@ -9,12 +9,18 @@
 }
 
 /* SESSION ERROR Styling ==================*/
-.notice {
+.notice,
+.notices {
   padding: 0px;
   margin-top: 10px;
   color: #a82828;
   font-weight: bold;
   list-style-type: none;
+}
+
+.notices {
+  padding: 10px;
+  list-style-type: disc;
 }
 /* header CSS styling ====================== */
 #top-header {
