@@ -1,0 +1,29 @@
+<div id="add-class">
+  <h1><%= title %></h1>
+
+  <% if (errors) { %>
+  <ul class="add-class-errors">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <form id="class-form" action="/site-name/add-classification" method="post">
+    <legend>THIS FIELD IS REQUIRTED</legend>
+    <p>
+      <span>Please Note:</span> Classification name cannot contain a space or
+      special character of any kind.
+    </p>
+    <label for="classification_name">Classification Name</label>
+    <input
+      type="text"
+      id="classification_name"
+      name="classification_name"
+      required
+      pattern="[A-Za-z]+"
+      minlength="3"
+    />
+    <button type="submit">Add Classification</button>
+  </form>
+</div>

@@ -17,7 +17,23 @@
   font-weight: bold;
   list-style-type: none;
 }
-
+.add-class-error,
+.add-class-errors {
+  padding: 5px;
+  background-color: #8fa52b;
+  color: #000;
+  border-radius: 10px;
+  width: 95%;
+}
+.add-class-errors {
+  text-align: center;
+  margin: 10px auto;
+  background-color: rgb(216, 20, 20);
+  color: #fff;
+}
+.add-class-error span {
+  font-weight: bold;
+}
 .notices {
   padding: 10px;
   list-style-type: disc;
@@ -304,6 +320,61 @@ input:valid {
   margin-top: 2rem;
 }
 
+/* Vehicle Management styling========================= */
+.vehicle-management {
+  padding: 3rem 1rem;
+}
+.vehicle-management ul li {
+  list-style-type: none;
+  padding: 0.5rem;
+}
+#class-form {
+  background-color: #020235;
+  color: #fff;
+  width: 98%;
+  max-width: 30rem;
+  margin: 0 auto;
+  padding: 2rem 10px;
+  border-radius: 10px;
+}
+#class-form legend,
+#class-form span {
+  font-style: italic;
+  font-weight: bold;
+}
+#class-form p {
+  margin-bottom: 2rem;
+}
+#class-form label {
+  font-weight: bolder;
+  width: 100%;
+  font-size: 1.1rem;
+}
+#class-form input,
+#class-form button {
+  display: block;
+  width: 100%;
+  padding: 0.65rem;
+  margin-top: 5px;
+  border-radius: 10px;
+  border: none;
+}
+#class-form input:required {
+  border-left: 3px solid red;
+}
+#class-form input:valid {
+  border-left: 3px solid green;
+}
+#class-form button {
+  font-weight: bolder;
+  font-size: 1rem;
+  background-color: #daa520;
+  margin: 15px 0px;
+}
+#class-form button:hover {
+  background-color: green;
+  color: #fff;
+}
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
   body {
@@ -356,5 +427,14 @@ input:valid {
   .login-container input,
   .login-container button {
     width: 80%;
+  }
+
+  /*add class form*/
+  #class-form {
+    padding: 2rem 3rem;
+  }
+  /* notice styles */
+  .add-class-error {
+    width: 70%;
   }
 }

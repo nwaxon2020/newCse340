@@ -14,6 +14,7 @@ const inventoryRoute = require("./routes/inventoryRoute");
 const baseController = require("./controllers/baseController");
 const utilities = require("./utilities/index.js");
 const accountRoute = require("./routes/accountRoute");
+const vehicleMg = require("./routes/vehicleManagement.js");
 const bodyParser = require("body-parser");
 
 const session = require("express-session");
@@ -59,6 +60,7 @@ app.set("layout", "./layouts/layout"); // not at views root
 
 app.get("/", baseController.buildHome);
 app.use("/account", accountRoute);
+app.use("/site-name", vehicleMg);
 
 /* ***********************
  * Express Error Handler
