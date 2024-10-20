@@ -24,4 +24,19 @@ vehicleManagementRouter.post(
   utilities.handleErrors(invController.addNewClass)
 );
 
+///////////////////////////////////////////////////////////////////
+// Route to build add inventory
+vehicleManagementRouter.get(
+  "/add-inventory",
+  utilities.handleErrors(invController.buildNewInventory)
+);
+
+// Route to past add inventory
+vehicleManagementRouter.post(
+  "/add-inventory",
+  addClassValidate.addInventoryRules(),
+  addClassValidate.checkInevtoryData,
+  utilities.handleErrors(invController.addNewInventory)
+);
+
 module.exports = vehicleManagementRouter;

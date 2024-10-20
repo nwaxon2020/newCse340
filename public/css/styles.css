@@ -328,7 +328,7 @@ input:valid {
   list-style-type: none;
   padding: 0.5rem;
 }
-#class-form {
+.class-form {
   background-color: #020235;
   color: #fff;
   width: 98%;
@@ -337,21 +337,21 @@ input:valid {
   padding: 2rem 10px;
   border-radius: 10px;
 }
-#class-form legend,
-#class-form span {
+.class-form legend,
+.class-form span {
   font-style: italic;
   font-weight: bold;
 }
-#class-form p {
+.class-form p {
   margin-bottom: 2rem;
 }
-#class-form label {
+.class-form label {
   font-weight: bolder;
   width: 100%;
   font-size: 1.1rem;
 }
-#class-form input,
-#class-form button {
+.class-form input,
+.class-form button {
   display: block;
   width: 100%;
   padding: 0.65rem;
@@ -359,21 +359,48 @@ input:valid {
   border-radius: 10px;
   border: none;
 }
-#class-form input:required {
+.class-form input:required {
   border-left: 3px solid red;
 }
-#class-form input:valid {
+.class-form input:valid {
   border-left: 3px solid green;
 }
-#class-form button {
+.class-form button {
   font-weight: bolder;
   font-size: 1rem;
   background-color: #daa520;
   margin: 15px 0px;
 }
-#class-form button:hover {
+.class-form button:hover {
   background-color: green;
   color: #fff;
+}
+
+/* New inventory form */
+.inv-form-container legend {
+  margin-bottom: 3rem;
+}
+.inv-form-container label {
+  display: block;
+  margin-top: 1.5rem;
+  font-size: 1rem;
+}
+.inv-form-container input,
+.inv-form-container textarea,
+.inv-form-container select {
+  margin-top: 5px;
+  margin-bottom: 1rem;
+}
+
+.inv-form-container textarea,
+.inv-form-container select {
+  width: 100%;
+  border-radius: 10px;
+  padding: 1rem;
+}
+.inv-form-container select {
+  font-weight: bold;
+  padding: 0.5rem;
 }
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
@@ -430,7 +457,7 @@ input:valid {
   }
 
   /*add class form*/
-  #class-form {
+  .class-form {
     padding: 2rem 3rem;
   }
   /* notice styles */

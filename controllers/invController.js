@@ -83,6 +83,72 @@ invCont.addNewClass = async function (req, res) {
   }
 };
 
+// Inventory Build for new inventory
+invCont.buildNewInventory = async function (req, res, next) {
+  try {
+    const choices = await utilities.buildClassificationList();
+    let nav = await utilities.getNav();
+    res.render("inventory/add-inventory", {
+      title: "Add New Inventory",
+      nav,
+      choices,
+      errors: null,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* ****************************************
+ *  Process Adding Inventory
+ * *************************************** */
+invCont.addNewInventory = async function (req, res) {
+  let nav = await utilities.getNav();
+  const {
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+  } = req.body;
+
+  const addInventoryResult = await addClassModel.addInventory(
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color
+  );
+
+  if (addInventoryResult) {
+    req.flash(
+      "add-class-error",
+      `<span>${inv_make}</span> was added successfuly!`
+    );
+    res.status(201).render("inventory/management", {
+      title: "Vehicle Management",
+      nav,
+    });
+  } else {
+    req.flash("add-class-error", "Sorry, the registration failed.");
+    res.status(501).render("inventory/add-inventory", {
+      title: "Add New Inventory",
+      nav,
+      choices,
+    });
+  }
+};
+
 // Erroe Handling
 invCont.buildError = async function (req, res, next) {
   const error = new Error("This is a Server Error.");
