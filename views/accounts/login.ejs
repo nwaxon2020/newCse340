@@ -1,6 +1,12 @@
 <div>
   <h1><%= title %></h1>
-  <%- messages() %>
+  <% if (errors) { %>
+  <ul class="notices">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %> <%- messages() %>
   <div class="login-container">
     <form id="loginForm" action="/account/login" method="post">
       <label for="account_email">Email Address:</label>
@@ -9,6 +15,7 @@
         id="account_email"
         name="account_email"
         required
+        value="<%= locals.account_email %>"
         placeholder="@email"
       />
 

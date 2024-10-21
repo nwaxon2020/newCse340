@@ -17,6 +17,7 @@ const accountRoute = require("./routes/accountRoute");
 const vehicleMg = require("./routes/vehicleManagement.js");
 const bodyParser = require("body-parser");
 
+const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const pool = require("./database/");
 
@@ -61,6 +62,7 @@ app.set("layout", "./layouts/layout"); // not at views root
 app.get("/", baseController.buildHome);
 app.use("/account", accountRoute);
 app.use("/site-name", vehicleMg);
+app.use(cookieParser());
 
 /* ***********************
  * Express Error Handler
