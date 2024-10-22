@@ -72,6 +72,7 @@ async function registerAccount(req, res) {
     res.status(201).render("accounts/login", {
       title: "Login",
       nav,
+      errors: null,
     });
   } else {
     req.flash("notice", "Sorry, the registration failed.");
@@ -125,8 +126,8 @@ async function accountLogin(req, res) {
       res.status(400).render("accounts/login", {
         title: "Login",
         nav,
-        errors: null,
         account_email,
+        errors: null,
       });
     }
   } catch (error) {
