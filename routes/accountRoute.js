@@ -36,7 +36,7 @@ accountRouter.post(
 
 accountRouter.get(
   "/account",
-  utilities.checkLogin,
+  // utilities.checkLogin,
   utilities.handleErrors(accountController.account)
 );
 
