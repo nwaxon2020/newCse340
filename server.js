@@ -63,6 +63,7 @@ app.get("/", baseController.buildHome);
 app.use("/account", accountRoute);
 app.use("/site-name", vehicleMg);
 app.use(cookieParser());
+app.use(utilities.checkJWTToken);
 
 /* ***********************
  * Express Error Handler
