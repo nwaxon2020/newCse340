@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+
+  <body>
+    <div id="wrapper">
+      <%- include("../partials/header")%> <%-include("../partials/navigation")%>
+      <main>
+        <div id="add-class">
+          <h1><%= title %></h1>
+
+          <% if (errors) { %>
+          <ul class="add-class-errors">
+            <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+          <% } %>
+
+          <form
+            class="class-form inv-form-container"
+            action="/site-name/update"
+            method="post"
+          >
+            <legend>THIS FIELD IS REQUIRTED</legend>
+
+            <label for="classification_id">Classifications</label>
+
+            <%- choices %>
+
+            <label for="inv_make">Make</label>
+            <input
+              type="text"
+              name="inv_make"
+              id="inv_make"
+              minlength="3"
+              required
+              placeholder="minimum of 3 characters"
+              value="<%= locals.inv_make %>"
+            />
+
+            <label for="inv_model">Model</label>
+            <input
+              type="text"
+              name="inv_model"
+              minlength="3"
+              id="inv_model"
+              required
+              placeholder="minimum of 3 characters"
+              value="<%= locals.inv_model %>"
+            />
+
+            <label for="inv_description">Description</label>
+            <textarea
+              id="inv_description"
+              name="inv_description"
+              rows="8"
+              cols="50"
+              required
+              value="<%= locals.inv_description %>"
+            ></textarea>
+
+            <label for="inv_image">Image Path</label>
+            <input
+              type="text"
+              name="inv_image"
+              id="inv_image"
+              required
+              value="<%= locals.inv_image %>"
+            />
+
+            <label for="inv_thumbnail">Thumbnail Path</label>
+            <input
+              type="text"
+              name="inv_thumbnail"
+              id="inv_thumbnail"
+              required
+              value="<%= locals.inv_thumbnail %>"
+            />
+
+            <label for="inv_price">Price</label>
+            <input
+              type="text"
+              name="inv_price"
+              id="inv_price"
+              required
+              placeholder="decimal or integer"
+              value="<%= locals.inv_price %>"
+            />
+
+            <label for="inv_year">Year</label>
+            <input
+              type="text"
+              name="inv_year"
+              id="inv_year"
+              required
+              placeholder="4-digits year only"
+              pattern="\d{4}"
+              value="<%= locals.inv_year %>"
+            />
+
+            <label for="inv_miles">Miles</label>
+            <input
+              type="text"
+              name="inv_miles"
+              id="inv_miles"
+              required
+              placeholder="digits Only"
+              pattern="\d+"
+              value="<%= locals.inv_miles %>"
+            />
+
+            <label for="inv_color">Color</label>
+            <input
+              type="text"
+              name="inv_color"
+              id="inv_color"
+              required
+              value="<%= locals.inv_color %>"
+            />
+
+            <button type="submit">Update Vehicle</button>
+          </form>
+        </div>
+      </main>
+      <%- include("../partials/footer") %>
+    </div>
+  </body>
+</html>

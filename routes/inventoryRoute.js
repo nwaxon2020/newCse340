@@ -15,6 +15,15 @@ router.get(
   utilities.handleErrors(invController.buildByInvId)
 );
 
+//Route to build modifing inventory
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleErrors(invController.getInventoryJSON)
+);
+
+//Route to build editing inventory
+router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEdit));
+
 //Error handeling
 router.get("/trigger-error", invController.buildError);
 

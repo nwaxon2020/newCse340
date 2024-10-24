@@ -38,9 +38,13 @@ invCont.buildByInvId = async function (req, res, next) {
 // Inventory Build for Vehicle Management
 invCont.buildVehicleManagement = async function (req, res, next) {
   let nav = await utilities.getNav();
+
+  const classificationSelect = await utilities.buildClassificationList();
+
   res.render("inventory/management", {
     title: "Vehicle Management",
     nav,
+    classificationSelect,
   });
 };
 
@@ -154,6 +158,62 @@ invCont.buildError = async function (req, res, next) {
   const error = new Error("This is a Server Error.");
   error.status = 500; // Set the error status code
   next(error); // Pass the error to the next middleware
+};
+
+/* ***************************
+ *  Return Inventory by Classification As JSON
+ * ************************** */
+invCont.getInventoryJSON = async (req, res, next) => {
+  const classification_id = parseInt(req.params.classification_id);
+  const invData = await invModel.getInventoryByClassificationId(
+    classification_id
+  );
+  if (invData[0].inv_id) {
+    return res.json(invData);
+  } else {
+    next(new Error("No data returned"));
+  }
+};
+
+/* ****************************************
+ *  Process Editing Inventory
+ * *************************************** */
+// Inventory Build for new inventory
+invCont.buildEdit = async function (req, res, next) {
+  try {
+    const inventory_id = parseInt(req.params.inv_id);
+    console.log("Inventory ID being fetched:", inventory_id);
+    let nav = await utilities.getNav();
+    const invData = await invModel.getInventoryByDetails(inventory_id);
+
+    // Check if invData contains data
+    if (!invData || invData.length === 0) {
+      throw new Error("Inventory data not found for the given ID");
+    }
+
+    const choices = await utilities.buildClassificationList();
+    const invName = `${invData[0].inv_make} ${invData[0].inv_model}`;
+
+    res.render("inventory/edit-inventory", {
+      title: invName,
+      nav,
+      choices,
+      errors: null,
+      inv_id: invData[0].inv_id,
+      inv_make: invData[0].inv_make,
+      inv_model: invData[0].inv_model,
+      inv_year: invData[0].inv_year,
+      inv_description: invData[0].inv_description,
+      inv_image: invData[0].inv_image,
+      inv_thumbnail: invData[0].inv_thumbnail,
+      inv_price: invData[0].inv_price,
+      inv_miles: invData[0].inv_miles,
+      inv_color: invData[0].inv_color,
+      classification_id: invData[0].classification_id,
+    });
+  } catch (error) {
+    next(error);
+  }
 };
 
 module.exports = invCont;
