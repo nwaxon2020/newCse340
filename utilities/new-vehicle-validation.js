@@ -151,4 +151,47 @@ validateVehicle.checkInevtoryData = async (req, res, next) => {
   next();
 };
 
+/* ******************************
+ * Check data and return errors or continue to Edit Inventory
+ * ***************************** */
+validateVehicle.checkUpdateData = async (req, res, next) => {
+  const {
+    classification_id,
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_description,
+    inv_image,
+    inv_thumbnail,
+    inv_price,
+    inv_year,
+    inv_miles,
+    inv_color,
+  } = req.body;
+
+  let errors = [];
+  errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    let nav = await utilities.getNav();
+    res.render("inventory/edit-inventory", {
+      errors,
+      title: `${inv_make} ${inv_model}`,
+      nav,
+      classification_id,
+      inv_id,
+      inv_make,
+      inv_model,
+      inv_description,
+      inv_image,
+      inv_thumbnail,
+      inv_price,
+      inv_year,
+      inv_miles,
+      inv_color,
+    });
+    return;
+  }
+  next();
+};
+
 module.exports = validateVehicle;

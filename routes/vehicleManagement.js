@@ -39,4 +39,12 @@ vehicleManagementRouter.post(
   utilities.handleErrors(invController.addNewInventory)
 );
 
+//Route to build POST Update
+vehicleManagementRouter.post(
+  "/update",
+  addClassValidate.addInventoryRules(),
+  addClassValidate.checkUpdateData,
+  utilities.handleErrors(invController.updateInventory)
+);
+
 module.exports = vehicleManagementRouter;

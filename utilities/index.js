@@ -111,7 +111,7 @@ Util.buildClassificationList = async function (classification_id = null) {
   let data = await invModel.getClassification();
   let classificationList = `
     <select name="classification_id" id="classificationList" required>
-      <option value="">Choose a Classification</option>
+      <option value="" >Choose a Classification</option>
   `;
 
   data.rows.forEach((row) => {
