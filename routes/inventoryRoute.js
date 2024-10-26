@@ -24,6 +24,12 @@ router.get(
 //Route to build editing inventory
 router.get("/edit/:inv_id", utilities.handleErrors(invController.buildEdit));
 
+//Route to build delete inventory
+router.get(
+  "/delete/:inv_id",
+  utilities.handleErrors(invController.buildDelete)
+);
+
 //Error handeling
 router.get("/trigger-error", invController.buildError);
 

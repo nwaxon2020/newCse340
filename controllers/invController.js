@@ -66,7 +66,7 @@ invCont.addNewClass = async function (req, res) {
   const { classification_name } = req.body;
 
   const addClassResult = await addClassModel.addClassification(
-    classification_name
+    classification_name[0]
   );
 
   if (addClassResult) {
@@ -108,6 +108,7 @@ invCont.buildNewInventory = async function (req, res, next) {
  * *************************************** */
 invCont.addNewInventory = async function (req, res) {
   let nav = await utilities.getNav();
+  const choices = await utilities.buildClassificationList();
   const {
     classification_id,
     inv_make,
@@ -142,13 +143,15 @@ invCont.addNewInventory = async function (req, res) {
     res.status(201).render("inventory/management", {
       title: "Vehicle Management",
       nav,
+      classificationSelect: choices,
     });
   } else {
     req.flash("add-class-error", "Sorry, the registration failed.");
-    res.status(501).render("inventory/add-inventory", {
+    res.status(501).render(".inventory/add-inventory", {
       title: "Add New Inventory",
       nav,
       choices,
+      errors: null,
     });
   }
 };
@@ -205,20 +208,14 @@ invCont.updateInventory = async function (req, res, next) {
     req.flash("notice", `The ${itemName} was successfully updated.`);
     res.redirect("/site-name/inv");
   } else {
-    const choices = await utilities.buildClassificationList(classification_id);
+    const choices = await utilities.buildClassificationList(); // Ensure `choices` is populated
     const itemName = `${inv_make} ${inv_model}`;
 
-    const classification_id = invData[0].classification_id;
-    const classificationSelect = await utilities.buildClassificationList(
-      classification_id
-    );
-
-    req.flash("notice", "Sorry, the insert failed.");
+    req.flash("notice", "Sorry, the update failed.");
     res.status(501).render("inventory/edit-inventory", {
       title: "Edit " + itemName,
       nav,
-      choices: classificationSelect,
-      errors: null,
+      choices,
       inv_id,
       inv_make,
       inv_model,
@@ -278,6 +275,60 @@ invCont.buildEdit = async function (req, res, next) {
   }
 };
 
+/* ****************************************
+ *  Process deletr Inventory
+ * *************************************** */
+// Inventory view for delete inventory
+invCont.buildDelete = async function (req, res, next) {
+  try {
+    const inventory_id = parseInt(req.params.inv_id);
+    let nav = await utilities.getNav();
+    const invData = await invModel.getInventoryByDetails(inventory_id);
+
+    if (!invData || invData.length === 0) {
+      throw new Error("Inventory data not found for the given ID");
+    }
+
+    const invName = `${invData[0].inv_make} ${invData[0].inv_model}`;
+
+    res.render("inventory/delete-confirm", {
+      title: invName,
+      nav,
+      errors: null,
+      inv_id: invData[0].inv_id,
+      inv_make: invData[0].inv_make,
+      inv_model: invData[0].inv_model,
+      inv_year: invData[0].inv_year,
+      inv_price: invData[0].inv_price,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* ***************************
+ *  Delete Inventory Data
+ * ************************** */
+invCont.deletInv = async function (req, res, next) {
+  let nav = await utilities.getNav();
+  const { inv_id } = req.body;
+
+  const vehicleDetails = await invModel.getInventoryByDetails(inv_id);
+  const deleteResult = await invModel.deleteInventory(inv_id);
+
+  if (deleteResult) {
+    const itemName = `${vehicleDetails[0].inv_make} ${vehicleDetails[0].inv_model}`;
+    req.flash("notice", `The ${itemName} was successfully DELETED.`);
+    res.redirect("/site-name/inv");
+  } else {
+    const choices = await utilities.buildClassificationList(); // Ensure `choices` is populated
+    console.log("Choices:", choices);
+    const itemName = `${inv_make} ${inv_model}`;
+
+    req.flash("notice", "Sorry, the DELETE failed.");
+    res.redirect("/site-name/inv/delete-confirm");
+  }
+};
 // Erroe Handling
 invCont.buildError = async function (req, res, next) {
   const error = new Error("This is a Server Error.");

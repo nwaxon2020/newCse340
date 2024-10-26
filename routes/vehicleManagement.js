@@ -47,4 +47,16 @@ vehicleManagementRouter.post(
   utilities.handleErrors(invController.updateInventory)
 );
 
+//Route to build delete inventory
+vehicleManagementRouter.get(
+  "/delete/:inv_id",
+  utilities.handleErrors(invController.buildDelete)
+);
+
+//Route to post delete inventory
+vehicleManagementRouter.post(
+  "/delete/:inv_id",
+  utilities.handleErrors(invController.deletInv)
+);
+
 module.exports = vehicleManagementRouter;

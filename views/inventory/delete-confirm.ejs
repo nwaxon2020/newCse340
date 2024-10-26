@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('../partials/head') %>
+
+  <body>
+    <div id="wrapper">
+      <%- include("../partials/header")%> <%-include("../partials/navigation")%>
+      <main>
+        <div id="add-class">
+          <h1><%= title %></h1>
+
+          <% if (errors) { %>
+          <ul class="add-class-errors">
+            <% errors.array().forEach(error => { %>
+            <li><%= error.msg %></li>
+            <% }) %>
+          </ul>
+          <% } %>
+
+          <form
+            class="class-form inv-form-container"
+            action="/site-name/delete/<%= inv_id %>"
+            method="post"
+          >
+            <legend>THIS FIELD IS REQUIRTED</legend>
+
+            <p>
+              Confirm this is the correct inventory item to be deleted <br />Any
+              delete cannot be undone.
+            </p>
+
+            <label for="inv_make">Make</label>
+            <input
+              type="text"
+              name="inv_make"
+              id="inv_make"
+              minlength="3"
+              required
+              placeholder="minimum of 3 characters"
+              value="<%= locals.inv_make %>"
+              readonly
+            />
+
+            <label for="inv_model">Model</label>
+            <input
+              type="text"
+              name="inv_model"
+              minlength="3"
+              id="inv_model"
+              required
+              placeholder="minimum of 3 characters"
+              value="<%= locals.inv_model %>"
+              readonly
+            />
+
+            <label for="inv_price">Price</label>
+            <input
+              type="text"
+              name="inv_price"
+              id="inv_price"
+              required
+              placeholder="decimal or integer"
+              value="<%= locals.inv_price %>"
+              readonly
+            />
+
+            <label for="inv_year">Year</label>
+            <input
+              type="text"
+              name="inv_year"
+              id="inv_year"
+              required
+              placeholder="4-digits year only"
+              pattern="\d{4}"
+              value="<%= locals.inv_year %>"
+              readonly
+            />
+
+            <button type="submit">Delete Vehicle</button>
+
+            <input
+              type="hidden"
+              name="inv_id"
+              value="<%= locals.inv_id || '' %>"
+            />
+          </form>
+        </div>
+      </main>
+      <%- include("../partials/footer") %>
+    </div>
+  </body>
+</html>
