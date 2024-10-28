@@ -143,10 +143,20 @@ async function account(req, res, next) {
   });
 }
 
+async function buildUpdateRegister(req, res, next) {
+  let nav = await utilities.getNav();
+  res.render("accounts/update-account", {
+    title: "Update Account",
+    nav,
+    errors: null,
+  });
+}
+
 module.exports = {
   buildLogin,
   buildRegister,
   registerAccount,
   accountLogin,
   account,
+  buildUpdateRegister,
 };

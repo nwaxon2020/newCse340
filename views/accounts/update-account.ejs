@@ -1,0 +1,69 @@
+<div>
+  <h1><%= title %></h1>
+
+  <% if (errors) { %>
+  <ul class="notices">
+    <% errors.array().forEach(error => { %>
+    <li><%= error.msg %></li>
+    <% }) %>
+  </ul>
+  <% } %>
+
+  <div class="login-container">
+    <form class="register" action="/account/updateRegister" method="post">
+      <label for="account_firstname">First Name:</label>
+      <input
+        type="text"
+        id="account_firstname"
+        name="account_firstname"
+        required
+        value="<%= locals.account_firstname %>"
+      />
+
+      <label for="account_lastname">Last Name:</label>
+      <input
+        type="text"
+        id="account_lastname"
+        name="account_lastname"
+        required
+        value="<%= locals.account_lastname %>"
+      />
+
+      <label for="account_email">Email Address:</label>
+      <input
+        type="email"
+        id="account_email"
+        name="account_email"
+        required
+        value="<%= locals.account_email %>"
+        placeholder="@email Enter a valid email address"
+      />
+        <div><a class="update-pw">Update Password</a></div>
+      <div id="register" class="password-update">
+        <label for="account_password">Password:</label>
+        <input
+          type="password"
+          id="account_password"
+          name="account_password"
+          required
+          minlength="12"
+          pattern="(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{12,}"
+        />
+        <i title="show password" class="fa fa-eye"></i>
+
+        <p class="password-title">
+            "Password must be at least 12 characters, contain at least 1 uppercase
+            letter, 1 number, and 1 special character"
+        </p>
+      </div>
+
+      <button type="submit">Update Account</button>
+    </form>
+    <p>Cancel Update? <a href="/account/Login">Sign In</a>.</p>
+  </div>
+</div>
+
+      <script src="/js/script.js"></script>
+    </form>
+  </div>
+</div>

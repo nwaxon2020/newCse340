@@ -402,6 +402,21 @@ input:valid {
   font-weight: bold;
   padding: 0.5rem;
 }
+
+/* update password =-==========================*/
+.update-pw {
+  color: #fff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.password-update {
+  display: none;
+}
+.password-update.show {
+  display: block;
+}
+/* ============================================== */
 /* Large View CSS styling=============================== */
 @media (min-width: 700px) {
   body {

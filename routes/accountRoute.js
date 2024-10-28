@@ -40,4 +40,10 @@ accountRouter.get(
   utilities.handleErrors(accountController.account)
 );
 
+accountRouter.get(
+  "/account-update",
+  // utilities.checkLogin,
+  utilities.handleErrors(accountController.buildUpdateRegister)
+);
+
 module.exports = accountRouter;

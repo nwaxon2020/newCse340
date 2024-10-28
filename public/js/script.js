@@ -14,3 +14,15 @@ toogleEye.addEventListener("click", () => {
     pword.setAttribute("type", "password");
   }
 });
+
+const updatePw = document.querySelector(".update-pw");
+const pw = document.querySelector(".password-update");
+
+updatePw.addEventListener("click", () => {
+  pw.classList.toggle("show");
+  if (updatePw.textContent == "Update Password") {
+    updatePw.textContent = "Cansel Password Update";
+  } else {
+    updatePw.textContent = "Update Password";
+  }
+});
