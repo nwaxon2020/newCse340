@@ -3,6 +3,7 @@ const accountRouter = new express.Router();
 const utilities = require("../utilities/index");
 const accountController = require("../controllers/accountController");
 const regValidate = require("../utilities/account-validation");
+const bookmarkController = require("../controllers/bookmarkController");
 const router = require("./static");
 
 // Route to handle "My Account" link (GET request)
@@ -45,5 +46,9 @@ accountRouter.get(
   // utilities.checkLogin,
   utilities.handleErrors(accountController.buildUpdateRegister)
 );
+
+// Bookmark routes
+accountRouter.post("/bookmark", bookmarkController.addBookmark);
+accountRouter.get("/bookmarks", bookmarkController.getBookmarks);
 
 module.exports = accountRouter;

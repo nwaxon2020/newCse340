@@ -1,0 +1,15 @@
+<!-- views/accounts/bookmarks.ejs -->
+<h2>My Bookmarked Vehicles</h2>
+<% if (bookmarks && bookmarks.length > 0) { %>
+<ul>
+  <% bookmarks.forEach(bookmark => { %>
+  <li>
+    <a href="/inv/detail/<%= bookmark.inv_id %>">
+      <%= bookmark.inv_make %> <%= bookmark.inv_model %>
+    </a>
+  </li>
+  <% }) %>
+</ul>
+<% } else { %>
+<p>You have no bookmarked vehicles.</p>
+<% } %>

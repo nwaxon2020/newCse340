@@ -99,6 +99,12 @@ Util.buildInventoryCarDetails = async function (data) {
           data.inv_miles
         )}</p>
       </div>
+
+      <form action="/account/bookmark" method="POST">
+        <input type="hidden" name="inv_id" value="${data.inv_id}">
+        <button type="submit">Bookmark this Vehicle</button>
+      </form>
+
     </div>`;
   } else {
     card = `<p class="notice">Sorry, no matching vehicles could be found.</p>`;
